@@ -11,9 +11,10 @@ $(document).ready(function () {
             dataType: "json",
             success: function (respuesta) {
                 if (respuesta.error) {
-                    console.log("contraseña incorrecta");
+                    $("#info").html("<p style='color:red'>Incorrect Password</p>");
                 } else {
                     $(".principal").html('<input type="button" class="button" id="top10" value="Top 10"><br><br>');
+                    $(".wc3logo").css("margin-bottom","25px");
                 }
                 $("#top10").click(function () {
                     var xmlhttp = new XMLHttpRequest();
@@ -23,9 +24,11 @@ $(document).ready(function () {
                     if(xmlhttp.readyState === 4 && xmlhttp.status === 200) {
                         //var datos = JSON.parse(xmlhttp.responseText);
                         var mensaje =  xmlhttp.responseText;
-                        console.log(mensaje);
                         $(".principal").html(mensaje);
+                        var filaCampos = "<tr><td>Rank</td><td>Lvl</td><td>Clan</td><td>Race</td><td>Player</td></tr>";
+                        $("table").eq(0).prepend(filaCampos);
                         $(".principal").css("padding",0);
+                        $(".principal").css("font-family","Roboto");
                     }
                 }
                 xmlhttp.open("POST", "http://alexdaw.ddns.net/ajax/warcraft/classicbnet.php" , true);
