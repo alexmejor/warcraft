@@ -60,7 +60,7 @@ input[type="text"], input[type="password"] {
 .container {
     font-size: 20px;
     min-height: 100vh;
-    background-color: rgba(0, 0, 0, 0.88);
+    background-color: rgba(255, 255, 255, 0.59);
 }
 
 .background {
@@ -71,10 +71,10 @@ input[type="text"], input[type="password"] {
 
 .principal {
     width: 100%;
-    color: #fff;
-    padding: 50px;
-    font-family: 'Roboto', sans-serif;
-    
+/*    color: white;*/
+    /* padding: 50px;*/
+    padding: 20px;
+    font-family: 'LifeCraftRegular';
 }
 
 .wc3logo {
@@ -96,32 +96,33 @@ input {
 }
 
 .button {
-    padding: 12px 16px;
-    font-family: 'Roboto', sans-serif;
-    background-color: #580909;
+    padding: 10px 14px;
+    font-family: 'LifeCraftRegular';
+    font-size: 20px;
+    background-color: #060c38;
+/*    background-color: #580909;*/
     border: none;
     color: #ffce00;
-    width: 200px;
+    width: 170px;
     margin: auto;
 }
 
 input[type="button"]:active {
-    background-color: #790000;
+    background-color: #091258;
+/*    background-color: #790000;*/
     border: none;
 }
 
 input[type="text"], input[type="password"] {
-/*
-    background-image: url(../input.png);
+
+    background-image: url(../img/input.png);
     background-position: 0 0;
     -webkit-background-size: ;
     background-size: cover;
-    height: 60px;
-*/
     color: white;
     border: 0;
-    border-bottom: 1px solid white;
-    height: 40px;
+    /*border-bottom: 1px solid white;*/
+    height: 60px;
     width: 100%;
     padding: 0 20px;
     font-weight: bold;
