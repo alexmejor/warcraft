@@ -28,7 +28,7 @@ $(document).ready(function () {
                         $(".principal").css("padding",0);
                     }
                 }
-                xmlhttp.open("POST", "classicbnet.php" , true);
+                xmlhttp.open("POST", "http://alexdaw.ddns.net/ajax/warcraft/classicbnet.php" , true);
                 xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
                 xmlhttp.send(informacionUsuario);
 //                    $.ajax({
