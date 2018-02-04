@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .principal {
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            color: black;
+        }
+        
+        input[type="text"] {
+            height: 30px;
+            width: 100%;
+        }
+        
+        .borde {
+            border: 1px solid black;
+        }
+    
+        body {
+            background-color: #1f1f1f;
+            color: white;
+            font-size: 19px;
+        }
+        input {
+            font-size: 17px;
+        }
+        input[type="button"] {
+            padding: 7px;
+            background-color: #1b1bac;
+            color: white;
+            border: none;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#zonaeditado").hide();
+            $("#nombre").focus();
+            //$("#boton").click(function() {
+            $("#nombre").keyup(function() {
+                var xmlhttp = new XMLHttpRequest();
+
+                var a = $("#nombre").val();
+                var b = $("#apellido").val();
+                var informacionUsuario = "nombre="+ a +"&apellidos=" + b;
+                xmlhttp.onreadystatechange = function() {
+                    if(xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                        //var datos = JSON.parse(xmlhttp.responseText);
+                        var mensaje =  xmlhttp.responseText;
+                        $("#info").html(mensaje);
+                        
+                        $("#info p").click(function(){
+              
+                            var valor = $(this).html();
+                            $("#zonaeditado").show();
+                            $("#seleccion").val(valor);
+                            $("#oculto").val(valor);
+                            $("#seleccion").append("<br>").append(""); 
+                            $("#nombre").val("");
+                            $("#seleccion").focus();
+                        });
+                    }
+                }
+                xmlhttp.open("POST", "http://alexdaw.ddns.net/ajax/servidor.php" , true);
+                xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                xmlhttp.send(informacionUsuario);
+            });
+            
+            $("#boton").click(function() {
+               $.ajax({
+                        url: "http://alexdaw.ddns.net/ajax/servidor.php",
+                        type: "POST",
+                        data: {nombre:$("#nombre").val(), boton:$("#boton").val()},
+                        dataType: "json",
+                        success: function(respuesta){
+                            
+                        }
+                    });
+                insertar();
+            });
+            $("#editar").click(function() {
+            var oculto = $("#oculto").val();
+               $.ajax({
+                        url: "http://alexdaw.ddns.net/ajax/servidor.php",
+                        type: "POST",
+                        data: {nombreNuevo:$("#seleccion").val(), editar:$("#editar").val(), nombreAntiguo: oculto},
+                        dataType: "json",
+                        success: function(respuesta){
+                            
+                        }
+                    });
+                $("#zonaeditado").hide();
+                $("#nombre").focus();
+                $("#info").html("<br><p style='color:green'>Usuario editado</p>");
+            });
+            
+            function buscarPersona(objetoJSON, usuario) {
+                var array = [];
+                for (var i in objetoJSON){
+                    var persona = objetoJSON[i];
+                    array.push(persona.nombre.toLowerCase());
+                }
+                return array.indexOf(usuario) > -1;
+            }
+            
+           function insertar(){
+                $("#zonaeditado").show();
+                $("#info").html("<br><p style='color:green'>Usuario insertado</p>");
+                $("#zonaeditado").hide();
+               $("#nombre").val("").focus();
+           } 
+        });
+    </script>
+</head>
+<body>
+    <div class="cabecera">
+    </div>    
+    <div class="contenido">
+        <div class="principal">
+          Nombre: 
+           <input type="text" id="nombre"><br><br>
+           <input type="button" id="boton" value="Insertar"><br>
+            <div id="info"></div><br>
+            <div id="zonaeditado">
+            <input type="text" id="seleccion"><br><br>
+            <input type="button" id="editar" value="Editar">
+            <input type="hidden" id="oculto">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
