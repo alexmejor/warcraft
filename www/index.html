@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <!-- Required meta tags-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <title>Document</title>
     <style>
@@ -15,18 +22,20 @@
    <div class="background">
     <div class="container">
        <div class="wc3logo">
-       <img src="img/warcraft-3-logo.png" align="middle" width="20%"  align="right">
+       <img src="img/warcraft-logo.png">
         <!--<h1>WARCRAFT III</h1>
         <h3>NETWORK</h3>-->
         </div>
         <div class="principal">
-          <div id="info"></div>
-          Username:
-           <input type="text" placeholder="" id="name"><br><br>
-           Password:
-           <input type="password" placeholder="" id="password"><br><br><br>
-            <input type="button" class="button" id="boton" value="Logon"><br><br>
-            <input type="button" id="editar" class="button" value="Create New Account">
+          <input type="button" class="button" id="rocrank" value="Roc Rank"><br><br>
+          <input type="button" class="button" id="tftrank" value="Tft Rank"><br><br>
+            <div id="info"></div>
+            <div id="login">
+                <input type="text" placeholder="Username..." id="name"><br><br>
+                <input type="password" placeholder="Password..." id="password"><br><br><br><br>
+                <input type="button" class="button" id="logon" value="Logon"><br><br>
+                <input type="button" id="newuser" class="button" value="Create New Account">
+            </div>
         </div>
     </div>
     </div>
